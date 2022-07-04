@@ -14,6 +14,33 @@
 </script>
 
 <div class="flex">
-	<MortgageForm />
-	<Chart />
+	<div class="header">
+        <div>
+          <p>Estimate your monthly mortgage payment with our</p>
+          <p>Mortgage & Home Load Calculator</p>
+        </div>
+        <button id="history">History</button>
+    </div>
+	<div class="main">
+		<MortgageForm />
+		<Chart />
+	</div>
 </div>
+
+<style>
+	.header {
+		display: flex;
+		justify-content: space-between;
+		background-color: aquamarine;
+	}
+
+	#history {
+		margin: 30px;
+		height: 30px;
+	}
+
+	.main {
+  		display: flex;
+  		min-height: 100vh;
+	}
+</style>
