@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Chart, MortgageForm } from '$lib/components';
+	import { Chart, MortgageForm } from '../components';
 
 	const calculateMonthlyPayment = (loanAmount: number, loanTerm: number, interest: number) => {
 		const i = interest / (12 * 100);
