@@ -32,3 +32,4 @@
 <div>
 	<canvas bind:this={chartCanvas} id="mortgageChart" />
 </div>
+
