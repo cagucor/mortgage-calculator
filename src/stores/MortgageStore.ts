@@ -1,16 +1,16 @@
 import { writable } from 'svelte/store'
 
 type Mortgage = {
-  HomePrice: number,
-  DownPayment: number,
-  LoanAmount: number,
-  LoantTerm: number,
-  InterestRate: number,
-  PropertyTaxes: number,
+  HomePrice: number
+  DownPayment: number
+  LoanAmount: number
+  LoantTerm: number
+  InterestRate: number
+  PropertyTaxes: number
   Insurance: number
 }
 
-const default_mortage: Mortgage = {
+const defaultMortage: Mortgage = {
   HomePrice: 0,
   DownPayment: 0,
   LoanAmount: 0,
@@ -20,5 +20,6 @@ const default_mortage: Mortgage = {
   Insurance: 0
 }
 
-export const MortgageStore = writable(default_mortage);
+const MortgageStore = writable(defaultMortage)
 
+export default MortgageStore

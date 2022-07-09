@@ -1,3 +1,3 @@
-import MortgageStore from "./MortgageStore";
+import MortgageStore from './MortgageStore'
 
-export {MortgageStore}
+export { MortgageStore }
