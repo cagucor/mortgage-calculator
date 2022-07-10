@@ -9,7 +9,7 @@
 		LoantTerm: 0,
 		LoanAmount: 0,
 		Insurance: 0,
-		InterestRate: 0,
+		InterestRate: 3.5,
 		PropertyTaxes: 0
 	};
 
@@ -32,9 +32,15 @@
 	};
 </script>
 
+
 <form on:submit|preventDefault>
 	<div class="flex flex-col m-2">
-		<label class="mb-2 text-lg font-medium" for="home_cost">Enter Home Price </label>
+		<label class="form- mb-2 text-lg font-medium" for="home_cost">
+			Enter Home Price &nbsp&nbsp
+			<button class="tooltip">!
+				<span class="tooltiptext">How much's your new home.</span>
+			</button>
+		</label>		
 		<input
 			class="border-gray-300 rounded-lg shadow-sm"
 			placeholder="$"
@@ -45,7 +51,12 @@
 		/>
 	</div>
 	<div class="flex flex-col m-2">
-		<label class="mb-2 text-lg font-medium" for="down_payment">Enter Down Payment</label>
+		<label class="mb-2 text-lg font-medium" for="down_payment">
+			Down Payment &nbsp&nbsp&nbsp	&nbsp&nbsp
+			<button class="tooltip">!
+				<span class="tooltiptext">How much you’re paying upfront toward the purchase of the home, usually it's 20% of home's price.</span>
+			</button>
+		</label>
 		<input
 			class="border-gray-300 rounded-lg shadow-sm"
 			placeholder="$"
@@ -56,10 +67,15 @@
 		/>
 	</div>
 	<div class="flex flex-col m-2">
-		<label class="mb-2 text-lg font-medium" for="loan_term">Enter Loan Term</label>
+		<label class="mb-2 text-lg font-medium" for="loan_term">
+			Enter Loan Term (years) &nbsp &nbsp &nbsp
+			<button class="tooltip">!
+				<span class="tooltiptext">How long you’ll be paying off your loan. A 30-year mortgage is common (and is the default here), but other terms are also available.</span>
+			</button>
+		</label>
 		<input
 			class="border-gray-300 rounded-lg shadow-sm"
-			placeholder="$"
+			placeholder="years"
 			type="number"
 			id="loan_term"
 			bind:value={mortgage.LoantTerm}
@@ -67,11 +83,19 @@
 		/>
 	</div>
 	<div class="flex flex-col m-2">
-		<label class="mb-2 text-lg font-medium" for="apr">Enter APR</label>
+		<label class="mb-2 text-lg font-medium" for="apr">
+			Enter APR &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+			<button class="tooltip">!
+				<span class="tooltiptext">
+					A mortgage annual percentage rate (APR) includes the yearly cost of borrowing money, expressed as a percentage, and is based on the loan interest rate, mortgage points, and other homebuying costs. The default is 3.5% which is the average interest rate in NSW. 
+				</span>
+			</button>
+		</label>
 		<input
 			class="border-gray-300 rounded-lg shadow-sm"
 			placeholder="%"
 			type="number"
+			step="0.01"
 			id="apr"
 			bind:value={mortgage.InterestRate}
 			required
@@ -93,3 +117,48 @@
 		</button>
 	</div>
 </form>
+
+<style>
+	.tooltip {
+		position:relative;
+		display: inline-block;
+		border-bottom: 1px dotted black;
+		width: 25px;
+		height: 25px;
+		background-color: rgb(29 78 216);
+		color: rgb(255 255 255);
+	}
+
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: 300px;
+		background-color: #555;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		margin-left: -125px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	.tooltip .tooltiptext::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #555 transparent transparent transparent;
+	}
+
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+	}
+</style>
