@@ -4,6 +4,8 @@ Our mortgage calculator helps everyday people calculate their monthly mortgage/h
 
 ## Developing
 
+NOTE: Needs to be run on node v17 or later!
+
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
