@@ -38,7 +38,7 @@
 
 	$: console.log(mortgage);
 	$: console.log(monthly);
-	$: data = range(0, total, monthly);
+	// $: data = range(0, total, monthly);
 
 	function range(start: number, end: number, step = 1, stepCount = 0) {
 		const allNumbers = [start, end, step, stepCount].every(Number.isFinite);
