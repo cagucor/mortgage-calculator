@@ -20,6 +20,6 @@ const defaultMortage: Mortgage = {
   Insurance: 0
 }
 
-const MortgageStore = writable(defaultMortage)
+const MortgageStore = writable<Mortgage[]>([defaultMortage])
 
 export default MortgageStore
