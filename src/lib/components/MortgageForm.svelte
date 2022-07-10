@@ -3,31 +3,37 @@
 
 	import { MortgageStore } from '../../stores';
 
-	// let home_price: number;
-	// let down_payment: number;
-	// let loan_term: number;
-	// let apr: number;
-	// let property_taxes: number;
-	// let insurance: number;
-	// $: console.log(home_price);
-
-	let mortgage: Mortgage = {
-		HomePrice: 380000,
-		DownPayment: 76000,
-		LoantTerm: 30,
+	let defaultMortgage: Mortgage = {
+		HomePrice: 0,
+		DownPayment: 0,
+		LoantTerm: 0,
 		LoanAmount: 0,
 		Insurance: 0,
 		InterestRate: 3.5,
 		PropertyTaxes: 0
 	};
 
-	const onSubmit = (e: Event) => {
-		MortgageStore.set(mortgage);
+	export let index = 0;
+
+	let mortgage = structuredClone(defaultMortgage);
+
+	let mortgages: Mortgage[];
+
+	MortgageStore.subscribe((value) => (mortgages = value));
+
+	const onSubmit = () => {
+		index++;
+		MortgageStore.update((mortgages) => [...mortgages, structuredClone(mortgage)]);
+	};
+
+	const onReset = () => {
+		index = 0;
+		MortgageStore.set([defaultMortgage]);
 	};
 </script>
 
 
-<form on:submit|preventDefault={onSubmit}>
+<form on:submit|preventDefault>
 	<div class="flex flex-col m-2">
 		<label class="form- mb-2 text-lg font-medium" for="home_cost">
 			Enter Home Price &nbsp&nbsp
@@ -62,7 +68,7 @@
 	</div>
 	<div class="flex flex-col m-2">
 		<label class="mb-2 text-lg font-medium" for="loan_term">
-			Enter Loan Term &nbsp &nbsp &nbsp
+			Enter Loan Term (years) &nbsp &nbsp &nbsp
 			<button class="tooltip">!
 				<span class="tooltiptext">How long you’ll be paying off your loan. A 30-year mortgage is common (and is the default here), but other terms are also available.</span>
 			</button>
@@ -95,11 +101,21 @@
 			required
 		/>
 	</div>
-	<button
-		type="submit"
-		class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-		>Submit</button
-	>
+	<div>
+		<button
+			on:click={onSubmit}
+			type="submit"
+			class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+			>Submit</button
+		>
+		<button
+			on:click={onReset}
+			type="submit"
+			class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+		>
+			Reset
+		</button>
+	</div>
 </form>
 
 <style>
