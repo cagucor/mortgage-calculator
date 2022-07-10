@@ -1,18 +1,5 @@
-# create-svelte
+Our mortgage calculator helps everyday people calculate their monthly mortgage/home loan payments. Compared to the other mortgage calculators on the market which lack comparison, our calculator has a unique 'history' feature that enables our users to compare different mortgages to see which one suits them best. For example, some mortages have lower monthly payment but have a higher total payment because of the difference between down payment, interest rate and the loan term. So it would be very helpful if users are able to compare different mortgages, and select their favourite one. Besides, we have a user-friendly tooltips feature that will allow our users to have a better understanding of each input and provide them with detailed guidelines.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
-```
 
 ## Developing
 
@@ -33,6 +20,4 @@ To create a production version of your app:
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
